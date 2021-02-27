@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "**/.gitignore": true,
+    "**/.git": true,
+    "**/.vscode": true
+},
+"[xml].editor.defaultFormatter": "sapse.sap-ux-annotation-modeler-extension"
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="GamenightService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="Games" EntityType="GamenightService.Games"/>
+        <EntitySet Name="PlayerRounds" EntityType="GamenightService.PlayerRounds">
+          <NavigationPropertyBinding Path="Round" Target="Rounds"/>
+          <NavigationPropertyBinding Path="Player" Target="Players"/>
+        </EntitySet>
+        <EntitySet Name="Players" EntityType="GamenightService.Players">
+          <NavigationPropertyBinding Path="PlayerRounds" Target="PlayerRounds"/>
+        </EntitySet>
+        <EntitySet Name="Rounds" EntityType="GamenightService.Rounds">
+          <NavigationPropertyBinding Path="Tournament" Target="Tournaments"/>
+          <NavigationPropertyBinding Path="Game" Target="Games"/>
+          <NavigationPropertyBinding Path="PlayerRounds" Target="PlayerRounds"/>
+        </EntitySet>
+        <EntitySet Name="Tournaments" EntityType="GamenightService.Tournaments">
+          <NavigationPropertyBinding Path="Rounds" Target="Rounds"/>
+        </EntitySet>
+      </EntityContainer>
+      <EntityType Name="Games">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="60"/>
+        <Property Name="Regel" Type="Edm.String" MaxLength="512"/>
+        <Property Name="MaxPlayer" Type="Edm.Int32"/>
+      </EntityType>
+      <EntityType Name="PlayerRounds">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="Round" Type="GamenightService.Rounds" Nullable="false" Partner="PlayerRounds">
+          <ReferentialConstraint Property="Round_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Player" Type="GamenightService.Players" Nullable="false" Partner="PlayerRounds">
+          <ReferentialConstraint Property="Player_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <Property Name="Rank" Type="Edm.Int32"/>
+        <Property Name="Points" Type="Edm.Int32"/>
+        <Property Name="Round_ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Player_ID" Type="Edm.Int32" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="Players">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="40"/>
+        <NavigationProperty Name="PlayerRounds" Type="Collection(GamenightService.PlayerRounds)" Partner="Player"/>
+      </EntityType>
+      <EntityType Name="Rounds">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="Tournament" Type="GamenightService.Tournaments" Nullable="false" Partner="Rounds">
+          <ReferentialConstraint Property="Tournament_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Game" Type="GamenightService.Games" Nullable="false">
+          <ReferentialConstraint Property="Game_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PlayerRounds" Type="Collection(GamenightService.PlayerRounds)" Partner="Round"/>
+        <Property Name="Status" Type="Edm.String"/>
+        <Property Name="Tournament_ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Game_ID" Type="Edm.Int32" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="Tournaments">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="Rounds" Type="Collection(GamenightService.Rounds)" Partner="Tournament"/>
+        <Property Name="Winner" Type="Edm.String" MaxLength="40"/>
+      </EntityType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

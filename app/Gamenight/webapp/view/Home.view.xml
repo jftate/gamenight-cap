@@ -1,0 +1,47 @@
+<mvc:View controllerName="de.tit.Gamenight.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	
+				<Page id="page" title="{i18n>title}">
+					<content>
+                        <VBox width="100%" direction="Column" id="vbox0">
+				<items>
+					<Table noDataText="{i18n>noDataTxt}" id="table0" items="{/}" mode="MultiSelect">
+						<headerToolbar>
+							<OverflowToolbar>
+								<Button icon="sap-icon://delete" text="Spieleabend(e) löschen" press="onDeleteGamenight" type="Reject" />
+								<ToolbarSpacer/>
+                                <Button icon="sap-icon://add" text="{i18n>createTournBtn}" press="onAddGamenight" type="Emphasized"/>   
+                                <Button icon="sap-icon://action-settings" press="onGotoAdmin" />                            
+							</OverflowToolbar>
+						</headerToolbar>
+						<items>
+							<ColumnListItem type="Navigation" id="item0" press="onActivate">
+								<cells>
+									<Text text="{name}"/>
+									<ObjectStatus state="{= ${closed} ? 'Warning' : 'None'}" text="{path: 'closed', formatter: '.formatClosed'}" />
+									<ObjectStatus state="{= ${active} ? 'Success' : 'None'}" text="{path: 'active', formatter: '.formatStatus'}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+						<columns>
+							<Column id="column0">
+								<header>
+									<Label id="label0" text="{i18n>tournamentTxt}"/>
+								</header>
+							</Column>
+							<Column id="column2" hAlign="End">
+								<header>
+									<Label id="label2" text="{i18n>closedTxt}"/>
+								</header>
+							</Column>
+							<Column id="column1" hAlign="End">
+								<header>
+									<Label id="label1" text="{i18n>statusTxt}"/>
+								</header>
+							</Column>
+						</columns>
+					</Table>
+				</items>
+			</VBox>
+                    </content>
+				</Page>		
+</mvc:View>

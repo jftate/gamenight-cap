@@ -1,0 +1,150 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "de.tit.Gamenight",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+            "version": "1.40.12"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "srv-api/v2/gamenight/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "gamenight-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "gamenight",
+                    "action": "display",
+                    "title": "{{appTitle}}",
+                    "subTitle": "{{appDescription}}",
+                    "icon": "sap-icon://bar-chart"
+                }
+            } 
+        }
+        },
+        "sap.cloud": {
+            "public": true,
+            "service": "tit.gamenight"
+        },
+        "sap.ui": {
+            "technology": "UI5",
+            "icons": {
+                "icon": "",
+                "favIcon": "",
+                "phone": "",
+                "phone@2": "",
+                "tablet": "",
+                "tablet@2": ""
+            },
+            "deviceTypes": {
+                "desktop": true,
+                "tablet": true,
+                "phone": true
+            }
+        },
+        "sap.ui5": {
+            "flexEnabled": false,
+            "rootView": {
+                "viewName": "de.tit.Gamenight.view.App",
+                "type": "XML",
+                "async": true,
+                "id": "app"
+            },
+            "dependencies": {
+                "minUI5Version": "1.60.1",
+                "libs": {
+                    "sap.ui.core": {},
+                    "sap.m": {},
+                    "sap.ui.layout": {}
+                }
+            },
+            "contentDensities": {
+                "compact": true,
+                "cozy": true
+            },
+            "models": {
+                "i18n": {
+                    "type": "sap.ui.model.resource.ResourceModel",
+                    "settings": {
+                        "bundleName": "de.tit.Gamenight.i18n.i18n"
+                    }
+                },
+                "hana": {
+                    "dataSource": "mainService",
+                    "preload": true,
+                    "settings": {
+                        "operationMode": "Server"
+                    }
+                }
+            },
+            "resources": {
+                "css": [
+                    {
+                        "uri": "css/style.css"
+                    }
+                ]
+            },
+            "routing": {
+                "config": {
+                    "routerClass": "sap.m.routing.Router",
+                    "viewType": "XML",
+                    "async": true,
+                    "viewPath": "de.tit.Gamenight.view",
+                    "controlAggregation": "pages",
+                    "controlId": "app",
+                    "clearControlAggregation": false
+                },
+                "routes": [
+                    {
+                        "name": "RouteHome",
+                        "pattern": "",
+                        "target": [
+                            "TargetHome"
+                        ]
+                    },
+                    {
+                        "name": "AdminHome",
+                        "pattern": "Administration",
+                        "target": [
+                            "TargetAdmin"
+                        ]
+                    }
+                ],
+                "targets": {
+                    "TargetHome": {
+                        "viewType": "XML",
+                        "transition": "slide",
+                        "clearControlAggregation": false,
+                        "viewId": "Home",
+                        "viewName": "Home"
+                    },
+                    "TargetAdmin": {
+                        "viewType": "XML",
+                        "transition": "slide",
+                        "clearControlAggregation": false,
+                        "viewId": "Admin",
+                        "viewName": "Admin"
+                    }
+                }
+            }
+        }
+    }

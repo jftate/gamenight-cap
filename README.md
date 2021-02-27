@@ -1,5 +1,7 @@
 # gamenight-cap
 
+How to configure git
+--------------------
 git init
 git config --global user.email "your@example.com"
 git config --global user.name "Your Name"

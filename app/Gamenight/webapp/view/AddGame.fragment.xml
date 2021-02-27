@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+    <Dialog
+     id="gamePopover"
+		title="Wie soll das neue Spiel heißen ?"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		contentWidth="50%">
+		<buttons>
+				<Button
+					id="_okBtn"
+					text="Speichern"
+					type="Accept"
+                    press="handleAddNewGame" />
+                <Button id="_closeBtn" text="Abbrechen" type="Reject" press="handleCloseAddGame"/>
+        </buttons> 
+        <content>     
+        <sap.ui.layout.form:Form editable="true" xmlns:sap.ui.layout.form="sap.ui.layout.form" id="form0">
+		    <sap.ui.layout.form:formContainers>
+		        <sap.ui.layout.form:FormContainer id="container0">
+		            <sap.ui.layout.form:formElements>
+		                <sap.ui.layout.form:FormElement label="Name" id="element2">
+		                <sap.ui.layout.form:fields>
+		                    <Input id="_newGameName" value="{game>/Name}" maxLength="60" width="80%" class="sapUiSmallMargin" />
+		                </sap.ui.layout.form:fields>
+                        </sap.ui.layout.form:FormElement>
+                        <sap.ui.layout.form:FormElement label="Regel(n)" id="element3">
+		                <sap.ui.layout.form:fields>
+		                    <TextArea xmlns:core="sap.ui.core" xmlns="sap.m" value="{game>/Regel}" rows="6" maxLength="1024" width="80%" class="sapUiSmallMargin"/>
+		                </sap.ui.layout.form:fields>
+                        </sap.ui.layout.form:FormElement>
+                        <sap.ui.layout.form:FormElement label="max. Spieler" id="element4">
+		                <sap.ui.layout.form:fields>
+		                    <Input value="{game>/MaxPlayer}" type="Number" width="80%" class="sapUiSmallMargin" />
+		                </sap.ui.layout.form:fields>
+                        </sap.ui.layout.form:FormElement>
+		            </sap.ui.layout.form:formElements>
+		        </sap.ui.layout.form:FormContainer>
+		    </sap.ui.layout.form:formContainers>
+		    <sap.ui.layout.form:layout>
+		        <sap.ui.layout.form:ResponsiveGridLayout id="layout0"/>
+            </sap.ui.layout.form:layout></sap.ui.layout.form:Form>
+        </content>
+	</Dialog>
+</core:FragmentDefinition>

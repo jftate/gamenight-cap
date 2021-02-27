@@ -1,0 +1,164 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="de.tit.Gamenight.controller.Admin" displayBlock="true">
+    <Page id="page" title="{i18n>adminTitle}" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            
+        <VBox width="100%" direction="Column" id="vbox0">
+            
+            <items>
+            
+                <Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0">
+            
+                    <headerToolbar>
+            
+                        <Toolbar id="toolbar1">
+            
+                            <Title text="{i18n>gameTxt}"/>
+            
+                            <ToolbarSpacer/>
+            
+                            <Button icon="sap-icon://add-activity" press="onAddGame"/>
+            
+                            </Toolbar>
+            
+                        
+            
+                    </headerToolbar>
+            
+                    <content>
+            
+                        <Table noDataText="Drop column list items here and columns in the area above" id="table0" items="{hana>/Games}">
+            
+                            <items>
+            
+                                <ColumnListItem id="item0">
+            
+                                    <cells>
+            
+                                        <Text text="{hana>Name}" id="text4"/>
+            
+                                        <Text text="{hana>Regel}" id="text5"/>
+            
+                                        <Text text="{hana>MaxPlayer}" id="text6"/></cells>
+            
+                                </ColumnListItem>
+            
+                            </items>
+            
+                            <columns>
+            
+                                <Column id="column0" width="30%">
+            
+                                    <header>
+            
+                                        <Label text="Name" id="label0"/>
+            
+                                    </header>
+            
+                                </Column>
+            
+                                <Column id="column1" width="50%">
+            
+                                    <header>
+            
+                                        <Label text="Regeln" id="label1"/>
+            
+                                    </header>
+            
+                                </Column>
+            
+                                <Column id="column2" hAlign="End" width="20%">
+            
+                                    <header>
+            
+                                        <Label text="max. Spieler" id="label2"/>
+            
+                                    </header>
+            
+                                </Column></columns></Table>
+            
+                    </content>
+            
+                    </Panel>
+            
+                <Panel xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0_1614434451201">
+            
+                    <headerToolbar>
+            
+                        <Toolbar id="toolbar1_1614434451201">
+            
+                            <Title text="{i18n>playerTxt}"/>
+            
+                            <ToolbarSpacer/>
+            
+                            <Button icon="sap-icon://add-employee" press="onAddPlayer"/>
+            
+                            </Toolbar>
+            
+                        
+            
+                    </headerToolbar>
+            
+                    <content>
+            
+                        <Table noDataText="Drop column list items here and columns in the area above" id="table0_1614434544633" items="{hana>/Players}">
+            
+                            <items>
+            
+                                <ColumnListItem type="Active" id="item0_1614434544632">
+            
+                                    <cells>
+            
+                                        <Text text="{hana>Name}" id="text4_1614434544631"/>
+            
+                                        <Text text="{hana>Age}" id="text5_1614434544632"/>
+            
+                                        <ObjectStatus xmlns="sap.m" text="{= ${hana>isActiv} === true ? 'Ja' : (${hana>isActiv} === false ? 'Nein' : '')}" 
+                                            state="{= ${hana>isActiv} === true ? 'Success' : (${hana>isActiv} === false ? 'Error' : 'None')}" id="status0"/></cells>
+            
+                                </ColumnListItem>
+            
+                            </items>
+            
+                            <columns>
+            
+                                <Column id="column0_1614434544632" width="50%">
+            
+                                    <header>
+            
+                                        <Label text="Name" id="label0_1614434544632"/>
+            
+                                    </header>
+            
+                                </Column>
+            
+                                <Column id="column1_1614434544632" popinHAlign="End" hAlign="End" width="35%">
+            
+                                    <header>
+            
+                                        <Label text="Alter" id="label1_1614434544632"/>
+            
+                                    </header>
+            
+                                </Column>
+            
+                                <Column id="column3" hAlign="End">
+            
+                                    <header>
+            
+                                        <Text text="Aktiv?" id="text7"/>
+            
+                                    </header>
+            
+                                </Column></columns></Table>
+            
+                    </content>
+            
+                    </Panel>
+            
+            </items>
+            
+        </VBox>
+            
+        </content>
+    </Page>
+</mvc:View>
