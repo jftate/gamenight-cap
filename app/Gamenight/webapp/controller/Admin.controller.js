@@ -54,15 +54,18 @@ sap.ui.define([
                 var oGame = this.oAddGamePopover.getModel("game").getData();
                 var oModel = this.getOwnerComponent().getModel("hana");
                 var oView = this.getView();
+                var that = this;
 
                 oView.setBusy(true);
                 oModel.create("/Games", oGame, {
                     success: function (odata) {
                         oView.setBusy(false);
+                        that.oAddGamePopover.close();
                         MessageBox.success("Das Spiel " + odata.Name + " wurde erfolgreich hinzugefügt.");
                     },
                     error: function (error) {
                         oView.setBusy(false);
+                        that.oAddGamePopover.close();
                         MessageBox.error(error.message);
                     }
                 });
@@ -76,15 +79,18 @@ sap.ui.define([
                 var oPlayer = this.oAddPlayerPopover.getModel("player").getData();
                 var oModel = this.getOwnerComponent().getModel("hana");
                 var oView = this.getView();
+                var that = this;
 
                 oView.setBusy(true);
                 oModel.create("/Players", oPlayer, {
                     success: function (odata) {
                         oView.setBusy(false);
+                        that.oAddPlayerPopover.close();
                         MessageBox.success("Der Spieler " + odata.Name + " wurde erfolgreich hinzugefügt.");
                     },
                     error: function (error) {
                         oView.setBusy(false);
+                        that.oAddPlayerPopover.close();
                         MessageBox.error(error.message);
                     }
                 });
