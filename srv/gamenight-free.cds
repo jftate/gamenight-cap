@@ -6,7 +6,7 @@ using {
     Tournaments  as t
 } from '../db/gamenight-model';
 
-service GamenightUser @(requires : 'system-user')  {
+service GamenightFree {
     entity Games as select from g;
     entity PlayerRounds as select from pr;
     entity Players as select from p;
