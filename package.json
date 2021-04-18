@@ -34,6 +34,11 @@
     "hana": {
       "deploy-format": "hdbtable"
     },
+    "auth": {
+      "passport": {
+        "strategy": "JWT"
+      }
+    },
     "requires": {
       "db": {
         "kind": "hana"
