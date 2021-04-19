@@ -1,0 +1,37 @@
+<mvc:View controllerName="de.tit.userapp.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+					    <VBox width="100%" direction="Column" id="vbox0">
+					        <items>
+					            <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0">
+					                <sap.ui.layout.form:content>
+					                    <Label text="{i18n>userTxt}" id="label0"/>
+					                    <Input width="100%" id="input0" maxLength="40" required="true" value="{user>/Username}"/>
+					                    <Label text="{i18n>firstnameTxt}" id="label1"/>
+					                    <Input width="100%" id="input2" maxLength="60" value="{user>/Firstname}"/>
+                                        <Label text="{i18n>lastnameTxt}" id="label2"/>
+					                    <Input width="100%" id="input3" maxLength="60" value="{user>/Lastname}"/>
+                                        <Label text="{i18n>emailTxt}" id="label3"/>
+					                    <Input width="100%" id="input4" type="Email" maxLength="120" value="{user>/Email}"/>
+                                        </sap.ui.layout.form:content>
+					            </sap.ui.layout.form:SimpleForm>
+					        </items>
+					    </VBox>
+					</content>
+				<footer>
+				    <Toolbar width="100%" id="toolbar1">
+				        <content>
+				            <ToolbarSpacer id="spacer0"/>
+				            <Button xmlns="sap.m" text="{i18n>save}" id="button0" type="Accept"/>
+				            <Button xmlns="sap.m" text="{i18n>cancel}" id="button1" type="Reject"/>
+				        </content>
+				    </Toolbar>
+				</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

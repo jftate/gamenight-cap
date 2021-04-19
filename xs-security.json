@@ -12,6 +12,14 @@
             "description": "Gamenight Scope to use the app as administrator."
         },
         {
+            "name": "$XSAPPNAME.UserConsumer",
+            "description": "User management Scope for all user."
+        },
+        {
+            "name": "$XSAPPNAME.UserAdmin",
+            "description": "User management Scope for administrator."
+        },
+        {
             "name": "xs_authorization.read",
             "description": "Read authorization information from UAA"
         },
@@ -39,6 +47,20 @@
             "name": "Admin",
             "scope-references": [
                 "$XSAPPNAME.Admin"
+            ],
+            "description": "generated"
+        },
+        {
+            "name": "UserConsumer",
+            "scope-references": [
+                "$XSAPPNAME.UserConsumer"
+            ],
+            "description": "generated"
+        },
+        {
+            "name": "UserAdmin",
+            "scope-references": [
+                "$XSAPPNAME.UserAdmin"
             ],
             "description": "generated"
         }

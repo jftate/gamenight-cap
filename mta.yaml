@@ -64,9 +64,21 @@ modules:
       - Gamenight-content.zip
       name: Gamenight
       target-path: resources/
+    - artifacts:
+      - userapp-content.zip
+      name: userapp
+      target-path: resources/
 - name: Gamenight
   type: html5
   path: app/Gamenight
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+- name: userapp
+  type: html5
+  path: app/userapp
   build-parameters:
     builder: custom
     commands:

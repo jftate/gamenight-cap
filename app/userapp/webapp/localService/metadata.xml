@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="UserRegistration" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="Apps" EntityType="UserRegistration.Apps">
+          <NavigationPropertyBinding Path="Roles" Target="Roles"/>
+        </EntitySet>
+        <EntitySet Name="Roles" EntityType="UserRegistration.Roles">
+          <NavigationPropertyBinding Path="UserId" Target="Users"/>
+          <NavigationPropertyBinding Path="App" Target="Apps"/>
+        </EntitySet>
+        <EntitySet Name="Users" EntityType="UserRegistration.Users"/>
+      </EntityContainer>
+      <EntityType Name="Apps">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String" MaxLength="120" Nullable="false"/>
+        <Property Name="Description" Type="Edm.String" MaxLength="255"/>
+        <NavigationProperty Name="Roles" Type="Collection(UserRegistration.Roles)" Partner="App"/>
+        <Property Name="isActiv" Type="Edm.Boolean"/>
+      </EntityType>
+      <EntityType Name="Roles">
+        <Key>
+          <PropertyRef Name="ID"/>
+          <PropertyRef Name="UserId_ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <NavigationProperty Name="UserId" Type="UserRegistration.Users" Nullable="false">
+          <ReferentialConstraint Property="UserId_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <NavigationProperty Name="App" Type="UserRegistration.Apps" Partner="Roles">
+          <ReferentialConstraint Property="App_ID" ReferencedProperty="ID"/>
+        </NavigationProperty>
+        <Property Name="Name" Type="Edm.String" MaxLength="60" Nullable="false"/>
+        <Property Name="Description" Type="Edm.String" MaxLength="255"/>
+        <Property Name="isActiv" Type="Edm.Boolean"/>
+        <Property Name="UserId_ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="App_ID" Type="Edm.Guid"/>
+      </EntityType>
+      <EntityType Name="Users">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Username" Type="Edm.String" MaxLength="40" Nullable="false"/>
+        <Property Name="Lastname" Type="Edm.String" MaxLength="60"/>
+        <Property Name="Firstname" Type="Edm.String" MaxLength="60"/>
+        <Property Name="Email" Type="Edm.String" MaxLength="120"/>
+        <Property Name="isActiv" Type="Edm.Boolean"/>
+      </EntityType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
