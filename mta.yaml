@@ -68,6 +68,10 @@ modules:
       - userapp-content.zip
       name: userapp
       target-path: resources/
+    - artifacts:
+      - Northwind-content.zip
+      name: Northwind
+      target-path: resources/
 - name: Gamenight
   type: html5
   path: app/Gamenight
@@ -79,6 +83,14 @@ modules:
 - name: userapp
   type: html5
   path: app/userapp
+  build-parameters:
+    builder: custom
+    commands:
+    - npm run build
+    supported-platforms: []
+- name: Northwind
+  type: html5
+  path: app/Northwind
   build-parameters:
     builder: custom
     commands:
