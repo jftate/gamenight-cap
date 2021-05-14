@@ -11,6 +11,16 @@ sap.ui.define([
         return Controller.extend("de.tit.Northwind.controller.View1", {
             onInit: function () {
 
+                console.log(this.getOwnerComponent().getModel("countries").getData());
+
+                var oCountryModel = new sap.ui.model.json.JSONModel();
+                oCountryModel.loadData("/RestCountries/rest/v2/all");
+
+                oCountryModel.attachRequestCompleted(function () {
+                    debugger;
+                    console.log(oCountryModel.getData());
+                });
+
                 $.ajax({
                     url: "/RestCountries/rest/v2/all",
                     type: "GET",
