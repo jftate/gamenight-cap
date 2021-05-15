@@ -12,4 +12,5 @@ service GamenightFree {
     entity Players as select from p;
     entity Rounds as select from r;
     entity Tournaments as select from t;
+
 };

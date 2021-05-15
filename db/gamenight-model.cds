@@ -35,3 +35,4 @@ entity Tournaments {
     Rounds: Association to many Rounds on Rounds.Tournament = $self;
     Winner: String(40);
 };
+
