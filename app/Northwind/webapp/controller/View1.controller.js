@@ -11,7 +11,7 @@ sap.ui.define([
         return Controller.extend("de.tit.Northwind.controller.View1", {
             onInit: function () {
 
-                console.log(this.getOwnerComponent().getModel("countries").getData());
+                //console.log(this.getOwnerComponent().getModel("countries").getData());
 
                 /*var oCountryModel = new sap.ui.model.json.JSONModel();
                 oCountryModel.loadData("/RestCountries/rest/v2/all");
@@ -21,8 +21,10 @@ sap.ui.define([
                     console.log(oCountryModel.getData());
                 });*/
 
+                var prefix = this.getOwnerComponent()._oManifest._oBaseUri._parts.path;
+
                 $.ajax({
-                    url: "RestCountries/rest/v2/all",
+                    url: prefix + "RestCountries/rest/v2/all",
                     type: "GET",
                     success: function (data, textStatus, jqXHR) {
                         console.log(data);

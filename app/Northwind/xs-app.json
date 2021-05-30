@@ -6,7 +6,7 @@
   },
   "routes": [
     {
-      "authenticationType": "xsuaa",
+      "authenticationType": "none",
       "source": "^/RestCountries/(.*)$",
       "destination": "RestCountries",
       "target": "$1"
