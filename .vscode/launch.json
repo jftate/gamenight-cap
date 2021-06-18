@@ -31,6 +31,32 @@
       "env": {
         "run.config": "{\"handlerId\":\"fiori_tools\",\"runnableId\":\"/home/user/projects/gamenight\"}"
       }
+    },
+    {
+      "name": "Run gamenight-cap-1",
+      "request": "launch",
+      "type": "node",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "-n"
+      ],
+      "args": [
+        "--",
+        "cds",
+        "run",
+        "--in-memory?"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "envFile": "${workspaceFolder}/.env1",
+      "env": {
+        "NODE_ENV": "development",
+        "run.config": "{\"handlerId\":\"cap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/gamenight-cap\\\",\\\"profileName\\\":\\\"development\\\"}\"}"
+      }
     }
   ]
 }

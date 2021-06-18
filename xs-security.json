@@ -4,6 +4,10 @@
     "description": "Security profile of called application",
     "scopes": [
         {
+            "name": "$XSAPPNAME.KEYUSER",
+            "description": "UI5 Flexibility Key User Scope"
+        },
+        {
             "name": "$XSAPPNAME.Edit",
             "description": "Gamenight Scope to use the full app."
         },
@@ -63,6 +67,14 @@
                 "$XSAPPNAME.UserAdmin"
             ],
             "description": "generated"
-        }
+        },
+        {
+            "name": "GamenightKeyUser",
+            "description": "UI5 Flexibility Key User Role",
+            "scope-references": [
+                "$XSAPPNAME.KEYUSER",
+                "uaa.user"
+            ]
+    }
     ]
 }

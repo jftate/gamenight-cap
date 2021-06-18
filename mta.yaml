@@ -54,6 +54,7 @@ modules:
   type: com.sap.application.content
   path: app
   requires:
+  - name: ui5-flexibility
   - name: gamenight_html_repo_host
     parameters:
       content-target: true
@@ -90,13 +91,18 @@ modules:
     supported-platforms: []
 - name: Northwind
   type: html5
-  path: app/Northwind
+  path: app/Northwind  
   build-parameters:
     builder: custom
     commands:
     - npm run build
     supported-platforms: []
 resources:
+- name: ui5-flexibility
+  parameters:
+      service-plan: keyuser
+      service: ui5-flexibility-keyuser
+  type: org.cloudfoundry.managed-service
 - name: gamenight-db
   type: com.sap.xs.hdi-container
   parameters:
