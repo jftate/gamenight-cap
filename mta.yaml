@@ -23,6 +23,7 @@ modules:
 - name: gamenight-destination-content
   type: com.sap.application.content
   requires:
+  - name: ui5-flexibility
   - name: gamenight-destination-service
     parameters:
       content-target: true
@@ -54,7 +55,6 @@ modules:
   type: com.sap.application.content
   path: app
   requires:
-  - name: ui5-flexibility
   - name: gamenight_html_repo_host
     parameters:
       content-target: true
