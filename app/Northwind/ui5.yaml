@@ -2,6 +2,8 @@ specVersion: '1.0'
 metadata:
   name: Northwind
 type: application
+services:
+  - ui5-flexibility
 resources:
   configuration:
     propertiesFileSourceEncoding: UTF-8

@@ -1,3 +1,4 @@
+// @ts-nocheck
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
@@ -16,7 +17,8 @@ sap.ui.define([
 		 * @public
 		 * @override
 		 */
-		init: function () {
+		init: function () {          
+
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 

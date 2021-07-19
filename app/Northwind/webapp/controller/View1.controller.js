@@ -33,7 +33,7 @@ sap.ui.define([
                     url: prefix + "RestCountries/rest/v2/all",
                     type: "GET",
                     success: function (data, textStatus, jqXHR) {
-                        console.log(utils.copyArray(data));
+                        //console.log(utils.copyArray(data));
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log('Error occurred!');
