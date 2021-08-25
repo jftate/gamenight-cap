@@ -1,32 +1,25 @@
 // @ts-nocheck
 jQuery.sap.registerModulePath("de.nttdata.utillib", "../jtelibraries.denttdatautillib-1.0.0/");
 sap.ui.define([
+    "sap/ui/rta/api/startKeyUserAdaptation",
+    "sap/ui/fl/write/api/FeaturesAPI",
     "sap/ui/core/mvc/Controller",
     "de/nttdata/utillib/uiservice/js/utils"
 ],
 	/**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, utils) {
+    function (startKeyUserAdaptation, FeaturesAPI, Controller, utils) {
         "use strict";
-        
+
         return Controller.extend("de.tit.Northwind.controller.View1", {
             onInit: function () {
-                
-                //console.log(this.getOwnerComponent().getModel("countries").getData());
-                
-                /*var oCountryModel = new sap.ui.model.json.JSONModel();
-                oCountryModel.loadData("/RestCountries/rest/v2/all");
-                
-                oCountryModel.attachRequestCompleted(function () {
-                    debugger;
-                    console.log(oCountryModel.getData());
-                });*/
 
-                //jQuery.sap.registerResourcePath("de.nttdata.utillib", "uiservice/jtelibraries.denttdatautillib-1.0.0/");
+                var oAdaptationButton = this.getView().byId("adaptUi"); // must match the ID of the button
+                FeaturesAPI.isKeyUser().then(function (bIsKeyUser) {
+                    oAdaptationButton.setVisible(bIsKeyUser);
+                });
 
-                //jQuery.sap.require("de.nttdata.utillib.uiservice.js.utils");
-                
                 var prefix = this.getOwnerComponent()._oManifest._oBaseUri._parts.path;
 
                 $.ajax({
@@ -41,6 +34,12 @@ sap.ui.define([
 
                 });
 
-            }
+            },
+
+            switchToAdaptationMode: function () {
+                startKeyUserAdaptation({
+                    rootControl: this.getOwnerComponent()
+                });
+            },
         });
     });

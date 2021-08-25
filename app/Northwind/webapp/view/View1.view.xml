@@ -8,8 +8,12 @@
 					<content>
 					    <VBox width="100%" direction="Column" id="vbox0">
 					        <items>
+                                <Toolbar>
+                                    <smartVariants:SmartVariantManagement id="nwVariant" persistencyKey="nwAllKey" class="sapUiTinyMarginBegin" />
+                                    <ToolbarSpacer/>
+                                    <Button id="adaptUi" visible="false" text="'Adapt UI' text or i18n binding" press="switchToAdaptationMode" />
+                                </Toolbar>
                             
-                                <smartVariants:SmartVariantManagement id="nwVariant" persistencyKey="nwAllKey" class="sapUiTinyMarginBegin" />
 					            <sap.ui.comp.smartfilterbar:SmartFilterBar xmlns:sap.ui.comp.smartfilterbar="sap.ui.comp.smartfilterbar" class="sapContrastPlus"
                                      smartVariant="nwVariant" entitySet="Products" hSpacing="0" expandAdvancedArea="true" showGoButton="true" id="bar0"
                                      persistencyKey="filterbarKey" considerSelectionVariants="true">
