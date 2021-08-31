@@ -1,5 +1,5 @@
 {
-    "xsappname": "gamenight",
+    "xsappname": "gamenight-cap",
     "tenant-mode": "dedicated",
     "description": "Security profile of called application",
     "scopes": [

@@ -1,0 +1,28 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/sap/opu/odata/iwbep/GWSAMPLE_BASIC/(.*)$",
+      "target": "/sap/opu/odata/iwbep/GWSAMPLE_BASIC/$1",
+      "destination": "ES5",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+	"source": "^/keyuser/(.*)$",
+	"target": "$1",
+	"service": "com.sap.ui.flex.cf.keyuser",
+	"endpoint": "keyuser"
+    }
+  ]
+}

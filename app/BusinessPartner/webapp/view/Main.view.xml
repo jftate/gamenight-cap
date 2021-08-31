@@ -1,0 +1,32 @@
+<mvc:View controllerName="de.tit.BusinessPartner.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartVariants="sap.ui.comp.smartvariants">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" showHeader="false">
+					<content>
+                    <VBox width="100%" direction="Column" id="vbox0">
+					        <items>
+                                <Toolbar>
+                                    <smartVariants:SmartVariantManagement id="bpVariant" persistencyKey="bpAllKey" class="sapUiTinyMarginBegin" />
+                                    <ToolbarSpacer/>
+                                    <Button id="adaptUi" visible="false" text="'Adapt UI' text or i18n binding" press="switchToAdaptationMode" />
+                                </Toolbar>
+                            
+					            <sap.ui.comp.smartfilterbar:SmartFilterBar xmlns:sap.ui.comp.smartfilterbar="sap.ui.comp.smartfilterbar" class="sapContrastPlus"
+                                     smartVariant="bpVariant" entitySet="BusinessPartnerSet" hSpacing="0" expandAdvancedArea="true" showGoButton="true" id="bar0"
+                                     persistencyKey="filterbarKey" considerSelectionVariants="true">
+					                <sap.ui.comp.smartfilterbar:controlConfiguration>
+					                    <sap.ui.comp.smartfilterbar:ControlConfiguration id="configuration0"/>
+					                </sap.ui.comp.smartfilterbar:controlConfiguration>
+					            </sap.ui.comp.smartfilterbar:SmartFilterBar>
+					            <sap.ui.comp.smarttable:SmartTable xmlns:sap.ui.comp.smarttable="sap.ui.comp.smarttable" width="100%" direction="Column" useVariantManagement="true"
+                                    fitContainer="true" smartVariant="bpVariant" tableType="ResponsiveTable" header="Business Partners" enableAutoBinding="true" id="table0" entitySet="BusinessPartnerSet"
+                                    initiallyVisibleFields="CompanyName,WebAddress,EmailAddress,PhoneNumber,Address" persistencyKey="tableKey"/>
+					        </items>
+					    </VBox>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
